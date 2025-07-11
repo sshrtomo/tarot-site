@@ -48,12 +48,12 @@ button:hover {
     justify-content: center;
 }
 
-.scene {
-    width: 220px;
-    height: 320px;
-    perspective: 1000px;
-    margin-right: 2rem; /* Add space between card and text */
-}
+    .scene {
+        margin-right: 0;
+        margin-bottom: 2rem;
+        width: 180px;
+        height: 260px;
+    }
 
 .card {
     width: 100%;
