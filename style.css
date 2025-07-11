@@ -1,0 +1,122 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #1a1a1a;
+    color: #f0f2f5;
+    text-align: center;
+}
+
+h1 {
+    color: #f0f2f5;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+p {
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #8a2be2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.5);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #9932cc;
+    transform: translateY(-2px);
+}
+
+#result-container {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 800px; /* Adjust width for side-by-side layout */
+    justify-content: center;
+}
+
+.scene {
+    width: 220px;
+    height: 320px;
+    perspective: 1000px;
+    margin-right: 2rem; /* Add space between card and text */
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 2s;
+    transform-style: preserve-3d;
+}
+
+.card.is-flipped {
+    transform: rotateY(900deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-face--front {
+    background: #fff;
+    transform: rotateY(180deg);
+}
+
+.card-face--back {
+    background: #333;
+}
+
+.card-face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#card-meaning-area {
+    padding: 1.5rem;
+    max-width: 400px; /* Adjust width of the text area */
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px);
+    text-align: left;
+}
+
+#card-meaning-area.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#card-name {
+    color: #8a2be2;
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+#card-meaning {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+}

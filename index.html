@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タロットカード占い</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>光の無意識<br><span style="font-size: 60%;">（Luminous Unconscious）</span></h1>
+    <p>心を静めて、カードを引いてください</p>
+    <button id="draw-button">カードを引く</button>
+
+    <div id="result-container">
+        <div class="scene">
+            <div class="card" id="tarot-card">
+                <div class="card-face card-face--front">
+                    <img id="card-image" src="" alt="">
+                </div>
+                <div class="card-face card-face--back">
+                    <img src="images/card-back.png" alt="Card Back">
+                </div>
+            </div>
+        </div>
+
+        <div id="card-meaning-area">
+            <h2 id="card-name"></h2>
+            <p id="card-meaning"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
