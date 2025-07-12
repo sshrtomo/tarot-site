@@ -121,25 +121,3 @@ button:hover {
     color: #ccc;
 }
 
-#description-container {
-    margin-top: 4rem;
-    padding: 2rem;
-    max-width: 800px;
-    width: 90%;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    text-align: left;
-}
-
-#description-container ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#description-container li {
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-    color: #f0f2f5;
-    line-height: 1.6;
-}

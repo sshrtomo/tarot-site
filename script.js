@@ -68,22 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.text())
         .then(data => {
             const rows = data.trim().split('\n').slice(1); // ヘッダー行をスキップ
-            const descriptionContainer = document.getElementById('description-container');
-            const list = document.createElement('ul');
-
             rows.forEach(row => {
                 const firstCommaIndex = row.indexOf(',');
                 const secondCommaIndex = row.indexOf(',', firstCommaIndex + 1);
                 const filename = row.substring(0, firstCommaIndex).trim();
                 const message = row.substring(secondCommaIndex + 1).replace(/"/g, '').trim();
                 cardDescriptions[filename] = message;
-
-                const listItem = document.createElement('li');
-                listItem.textContent = message;
-                list.appendChild(listItem);
             });
-
-            descriptionContainer.appendChild(list);
         })
         .catch(error => console.error('Error fetching the CSV file:', error));
 });
