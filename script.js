@@ -30,6 +30,8 @@ const cardMeaningArea = document.getElementById('card-meaning-area');
 const cardName = document.getElementById('card-name');
 const cardMeaning = document.getElementById('card-meaning');
 
+let cardDescriptions = {}; // CSVから読み込んだ説明を格納するオブジェクト
+
 drawButton.addEventListener('click', () => {
     // Hide the meaning area and flip the card back if it's already flipped
     cardMeaningArea.classList.remove('visible');
@@ -45,7 +47,10 @@ drawButton.addEventListener('click', () => {
         cardImage.src = card.image;
         cardImage.alt = card.name;
         cardName.textContent = card.name;
-        cardMeaning.textContent = card.meaning;
+
+        // CSVから対応する説明文を取得して設定
+        const imageName = card.image.split('/').pop(); // 'images/00.jpg' -> '00.jpg'
+        cardMeaning.textContent = cardDescriptions[imageName] || card.meaning; // CSVになければデフォルトを使用
 
         // Flip the card
         tarotCard.classList.add('is-flipped');
@@ -56,4 +61,29 @@ drawButton.addEventListener('click', () => {
         }, 800); // Adjust timing to match CSS transition
 
     }, 400); // Delay to allow card to flip back
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('discription.csv')
+        .then(response => response.text())
+        .then(data => {
+            const rows = data.trim().split('\n').slice(1); // ヘッダー行をスキップ
+            const descriptionContainer = document.getElementById('description-container');
+            const list = document.createElement('ul');
+
+            rows.forEach(row => {
+                const firstCommaIndex = row.indexOf(',');
+                const secondCommaIndex = row.indexOf(',', firstCommaIndex + 1);
+                const filename = row.substring(0, firstCommaIndex).trim();
+                const message = row.substring(secondCommaIndex + 1).replace(/"/g, '').trim();
+                cardDescriptions[filename] = message;
+
+                const listItem = document.createElement('li');
+                listItem.textContent = message;
+                list.appendChild(listItem);
+            });
+
+            descriptionContainer.appendChild(list);
+        })
+        .catch(error => console.error('Error fetching the CSV file:', error));
 });
