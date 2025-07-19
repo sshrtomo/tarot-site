@@ -29,8 +29,9 @@ const cardImage = document.getElementById('card-image');
 const cardMeaningArea = document.getElementById('card-meaning-area');
 const cardName = document.getElementById('card-name');
 const cardMeaning = document.getElementById('card-meaning');
+const cardCategory = document.getElementById('card-category');
 
-let cardDescriptions = {}; // CSVから読み込んだ説明を格納するオブジェクト
+let cardData = {}; // CSVから読み込んだデータを格納するオブジェクト
 
 const descriptionContainer = document.getElementById('description-container');
 
@@ -51,11 +52,11 @@ drawButton.addEventListener('click', () => {
         cardImage.alt = card.name;
         cardName.textContent = card.name;
 
-        // CSVから対応する説明文を取得して設定
+        // CSVから対応する説明文と分類を取得して設定
         const imageName = card.image.split('/').pop(); // 'images/00.jpg' -> '00.jpg'
-        const description = cardDescriptions[imageName] || card.meaning; // CSVになければデフォルトを使用
-        cardMeaning.textContent = card.meaning;
-        descriptionContainer.textContent = description;
+        const data = cardData[imageName] || { category: '', message: card.meaning }; // CSVになければデフォルトを使用
+        cardMeaning.textContent = data.message;
+        cardCategory.textContent = data.category;
 
         // Flip the card
         tarotCard.classList.add('is-flipped');
@@ -75,11 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             const rows = data.trim().split('\n').slice(1); // ヘッダー行をスキップ
             rows.forEach(row => {
-                const firstCommaIndex = row.indexOf(',');
-                const secondCommaIndex = row.indexOf(',', firstCommaIndex + 1);
-                const filename = row.substring(0, firstCommaIndex).trim();
-                const message = row.substring(secondCommaIndex + 1).replace(/"/g, '').trim();
-                cardDescriptions[filename] = message;
+                const columns = row.split(',');
+                const filename = columns[0].trim();
+                const category = columns[1].replace(/"/g, '').trim();
+                const message = columns[2].replace(/"/g, '').trim();
+                cardData[filename] = { category, message };
             });
         })
         .catch(error => console.error('Error fetching the CSV file:', error));
