@@ -29,16 +29,18 @@ const cardImage = document.getElementById('card-image');
 const cardMeaningArea = document.getElementById('card-meaning-area');
 const cardName = document.getElementById('card-name');
 const cardMeaning = document.getElementById('card-meaning');
-const cardCategory = document.getElementById('card-category');
 
 let cardData = {}; // CSVから読み込んだデータを格納するオブジェクト
 
 const descriptionContainer = document.getElementById('description-container');
+const categoryContainer = document.getElementById('card-category-container');
 
 drawButton.addEventListener('click', () => {
     // Hide the meaning area and flip the card back if it's already flipped
     cardMeaningArea.classList.remove('visible');
-    descriptionContainer.classList.remove('visible');
+descriptionContainer.classList.remove('visible');
+categoryContainer.classList.remove('visible');
+    categoryContainer.classList.remove('visible');
     if (tarotCard.classList.contains('is-flipped')) {
         tarotCard.classList.remove('is-flipped');
     }
@@ -55,8 +57,9 @@ drawButton.addEventListener('click', () => {
         // CSVから対応する説明文と分類を取得して設定
         const imageName = card.image.split('/').pop(); // 'images/00.jpg' -> '00.jpg'
         const data = cardData[imageName] || { category: '', message: card.meaning }; // CSVになければデフォルトを使用
-        cardMeaning.textContent = data.message;
-        cardCategory.textContent = data.category;
+        cardMeaning.textContent = card.meaning;
+        descriptionContainer.textContent = data.message;
+        categoryContainer.textContent = data.category;
 
         // Flip the card
         tarotCard.classList.add('is-flipped');
@@ -65,6 +68,7 @@ drawButton.addEventListener('click', () => {
         setTimeout(() => {
             cardMeaningArea.classList.add('visible');
             descriptionContainer.classList.add('visible');
+            categoryContainer.classList.add('visible');
         }, 800); // Adjust timing to match CSS transition
 
     }, 400); // Delay to allow card to flip back
