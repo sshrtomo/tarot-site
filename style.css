@@ -154,3 +154,129 @@ button:hover {
 #description-container.visible {
     opacity: 1;
 }
+
+/* --- Enneagram section styles --- */
+/* Generic link button for navigation */
+.link-button {
+    color: #8a2be2;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.link-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* List of types on the Enneagram overview page */
+.type-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0 0;
+    width: 90%;
+    max-width: 800px;
+    text-align: left;
+}
+
+.type-list li {
+    margin: 1rem 0;
+}
+
+.type-list li a {
+    color: #8a2be2;
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
+}
+
+.type-list li a:hover {
+    color: #9932cc;
+}
+
+/* Description container for each type page */
+.type-description {
+    max-width: 800px;
+    margin: 1.5rem auto;
+    line-height: 1.7;
+    font-size: 1.1rem;
+    color: #ccc;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Posts container and posts */
+#posts-container {
+    margin-top: 2rem;
+    width: 90%;
+    max-width: 800px;
+    text-align: left;
+}
+
+.post {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.post h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #8a2be2;
+}
+
+.post p {
+    margin-bottom: 0;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* Post form styling */
+#post-form {
+    width: 90%;
+    max-width: 800px;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+#post-form input,
+#post-form textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #f0f2f5;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+#post-form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+#post-form button {
+    padding: 12px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #8a2be2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.5);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#post-form button:hover {
+    background-color: #9932cc;
+    transform: translateY(-2px);
+}
